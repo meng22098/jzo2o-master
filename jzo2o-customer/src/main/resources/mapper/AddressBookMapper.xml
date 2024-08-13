@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzo2o.customer.mapper.AddressBookMapper">
+
+    <select id="queryAddressListByUserId" resultType="com.jzo2o.api.customer.dto.response.AddressBookResDTO" parameterType="java.lang.Long">
+        SELECT * FROM address_book WHERE user_id=#{userId} AND is_deleted=0
+    </select>
+</mapper>
