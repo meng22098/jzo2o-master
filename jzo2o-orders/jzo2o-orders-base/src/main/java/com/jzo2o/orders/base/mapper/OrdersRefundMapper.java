@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * 订单退款表 Mapper 接口
  * </p>
  *
- * @author itcast
- * @since 2023-09-07
+ * @author ithyfjs
+ * @since 2024-07-07
  */
 public interface OrdersRefundMapper extends BaseMapper<OrdersRefund> {
 

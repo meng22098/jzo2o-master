@@ -10,8 +10,8 @@ import java.util.List;
  * 订单退款表 服务类
  * </p>
  *
- * @author itcast
- * @since 2023-09-07
+ * @author ithyfjs
+ * @since 2024-07-07
  */
 public interface IOrdersRefundService extends IService<OrdersRefund> {
 

@@ -14,8 +14,8 @@ import lombok.experimental.Accessors;
  * 违约记录
  * </p>
  *
- * @author itcast
- * @since 2023-08-06
+ * @author ithyfjs
+ * @since 2024-07-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

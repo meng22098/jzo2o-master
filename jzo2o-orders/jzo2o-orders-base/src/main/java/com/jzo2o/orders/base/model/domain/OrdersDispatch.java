@@ -15,8 +15,8 @@ import lombok.experimental.Accessors;
  * 派单池
  * </p>
  *
- * @author itcast
- * @since 2023-08-08
+ * @author ithyfjs
+ * @since 2024-07-08
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

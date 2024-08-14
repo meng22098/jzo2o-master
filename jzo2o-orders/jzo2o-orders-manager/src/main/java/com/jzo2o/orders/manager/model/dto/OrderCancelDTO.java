@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 /**
  * 订单取消模型
  *
- * @author itcast
- * @create 2023/8/7 17:12
+ * @author ithyfjs
+ * @create 2024/7/7 17:12
  **/
 @Data
 @Builder

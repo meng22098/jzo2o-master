@@ -42,15 +42,6 @@ public interface ServeItemMapper extends BaseMapper<ServeItem> {
      * @return 服务项和服务类型信息
      */
     ServeItemResDTO queryServeItemAndTypeById(@Param("id") Long id);
-
-    /**
-     * 根据服务id查询服务项
-     *
-     * @param id 服务id
-     * @return 服务项
-     */
-    ServeItem queryServeItemByServeId(@Param("id") Long id);
-
     /**
      * 查询启用状态的服务项目录
      *

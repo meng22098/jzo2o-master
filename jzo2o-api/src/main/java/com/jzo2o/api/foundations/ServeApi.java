@@ -13,5 +13,4 @@ public interface ServeApi {
 
     @GetMapping("/{id}")
     ServeAggregationResDTO findById(@PathVariable("id") Long id);
-
 }

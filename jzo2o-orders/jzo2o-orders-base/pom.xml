@@ -49,7 +49,7 @@
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.jzo2o</groupId>-->
-<!--            <artifactId>jzo2o-statemachine</artifactId>-->
+<!--            <artifactId>ybjzo2o-statemachine</artifactId>-->
 <!--            <version>1.0-SNAPSHOT</version>-->
 <!--        </dependency>-->
         <!--seata-->

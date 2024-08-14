@@ -171,4 +171,8 @@
             serve.id = #{id}
           AND serve.sale_status = 2
     </select>
+    <select id="findServeDetailById"
+            resultType="com.jzo2o.api.foundations.dto.response.ServeAggregationResDTO">
+        select * from serve where serve.id = #{id}
+    </select>
 </mapper>

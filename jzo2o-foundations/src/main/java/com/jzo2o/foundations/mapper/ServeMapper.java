@@ -32,5 +32,7 @@ public interface ServeMapper extends BaseMapper<Serve> {
 
     List<ServeAggregationTypeSimpleResDTO> findServeTypeListByRegionId(Long regionId);
 
-    List<ServeAggregationSimpleResDTO> queryServeDetailById(Long id);
+    ServeAggregationSimpleResDTO queryServeDetailById(Long id);
+
+    ServeAggregationResDTO findServeDetailById(Long id);
 }

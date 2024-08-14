@@ -38,15 +38,15 @@ public class InnerAddressBookController implements AddressBookApi {
         return BeanUtil.toBean(addressBook, AddressBookResDTO.class);
     }
 
-    @Override
-    @GetMapping("/getByUserIdAndCity")
-    @ApiOperation("根据用户id和城市获取用户地址列表")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "userId", value = "用户id", required = true, dataTypeClass = Long.class),
-            @ApiImplicitParam(name = "city", value = "城市名称", required = true, dataTypeClass = String.class)
-
-    })
-    public List<AddressBookResDTO> getByUserIdAndCity(@RequestParam("userId") Long userId,@RequestParam("city") String city) {
-        return addressBookService.getByUserIdAndCity(userId, city);
-    }
+//    @Override
+//    @GetMapping("/getByUserIdAndCity")
+//    @ApiOperation("根据用户id和城市获取用户地址列表")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "userId", value = "用户id", required = true, dataTypeClass = Long.class),
+//            @ApiImplicitParam(name = "city", value = "城市名称", required = true, dataTypeClass = String.class)
+//
+//    })
+//    public List<AddressBookResDTO> getByUserIdAndCity(@RequestParam("userId") Long userId,@RequestParam("city") String city) {
+//        return addressBookService.getByUserIdAndCity(userId, city);
+//    }
 }

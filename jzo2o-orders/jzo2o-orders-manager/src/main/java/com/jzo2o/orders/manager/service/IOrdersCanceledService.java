@@ -8,8 +8,8 @@ import com.jzo2o.orders.base.model.domain.OrdersCanceled;
  *  订单取消服务类
  * </p>
  *
- * @author itcast
- * @since 2023-08-19
+ * @author ithyfjs
+ * @since 2024-07-19
  */
 public interface IOrdersCanceledService extends IService<OrdersCanceled> {
 

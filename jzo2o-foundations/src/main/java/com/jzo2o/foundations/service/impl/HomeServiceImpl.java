@@ -184,10 +184,10 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Caching(cacheable = {
-                    @Cacheable(value = RedisConstants.CacheName.SERVE, key = "#id", unless = "#result.size() != 0", cacheManager = RedisConstants.CacheManager.THIRTY_MINUTES),
-                    @Cacheable(value = RedisConstants.CacheName.SERVE, key = "#id", unless = "#result.size() == 0", cacheManager = RedisConstants.CacheManager.ONE_DAY)})
+                    @Cacheable(value = RedisConstants.CacheName.SERVE, key = "#id", unless = "#result!=null", cacheManager = RedisConstants.CacheManager.THIRTY_MINUTES),
+                    @Cacheable(value = RedisConstants.CacheName.SERVE, key = "#id", unless = "#result==null", cacheManager = RedisConstants.CacheManager.ONE_DAY)})
     @Override
-    public List<ServeAggregationSimpleResDTO> queryServeDetail(Long id) {
+    public ServeAggregationSimpleResDTO queryServeDetail(Long id) {
         return serveMapper.queryServeDetailById(id);
     }
 }

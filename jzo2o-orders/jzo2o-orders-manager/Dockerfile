@@ -1,5 +1,5 @@
 FROM openjdk:11-jdk
-LABEL maintainer="研究院研发组 <research-maint@itcast.cn>"
+LABEL maintainer="研究院研发组 <research-maint@ityunbao.cn>"
 RUN echo "Asia/Shanghai" > /etc/timezone
 ARG PACKAGE_PATH=./target/jzo2o-orders-manager.jar
 

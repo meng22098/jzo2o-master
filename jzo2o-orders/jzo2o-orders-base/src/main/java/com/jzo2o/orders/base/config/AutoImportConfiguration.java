@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan({"com.jzo2o.orders.base.service","com.jzo2o.orders.base.handler"})
+@ComponentScan({"com.jzo2o.orders.base.service"})
 @MapperScan("com.jzo2o.orders.base.mapper")
 //@Import({OrderStateMachine.class})
 @EnableConfigurationProperties({DispatchProperties.class, ExecutorProperties.class})

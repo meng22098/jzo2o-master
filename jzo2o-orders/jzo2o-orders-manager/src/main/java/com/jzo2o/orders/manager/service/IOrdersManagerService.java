@@ -24,8 +24,8 @@ import java.util.List;
  * 订单表 服务类
  * </p>
  *
- * @author itcast
- * @since 2023-07-10
+ * @author ithyfjs
+ * @since 2024-07-10
  */
 public interface IOrdersManagerService extends IService<Orders> {
 

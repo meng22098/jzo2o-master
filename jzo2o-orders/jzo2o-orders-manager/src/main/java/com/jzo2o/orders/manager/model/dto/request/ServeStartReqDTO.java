@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author itcast
+ * @author ithyfjs
  */
 @Data
 @ApiModel("服务完成模型")

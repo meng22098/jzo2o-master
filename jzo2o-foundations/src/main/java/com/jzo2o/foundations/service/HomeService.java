@@ -64,5 +64,5 @@ public interface HomeService {
      */
     ServeItem queryServeItemByIdCache(Long id);
 
-    List<ServeAggregationSimpleResDTO> queryServeDetail(Long id);
+    ServeAggregationSimpleResDTO queryServeDetail(Long id);
 }

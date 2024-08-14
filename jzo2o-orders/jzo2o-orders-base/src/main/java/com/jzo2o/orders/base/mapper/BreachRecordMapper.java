@@ -13,8 +13,8 @@ import java.util.List;
  * 违约记录 Mapper 接口
  * </p>
  *
- * @author itcast
- * @since 2023-08-02
+ * @author ithyfjs
+ * @since 2024-07-02
  */
 public interface BreachRecordMapper extends BaseMapper<BreachRecord> {
 

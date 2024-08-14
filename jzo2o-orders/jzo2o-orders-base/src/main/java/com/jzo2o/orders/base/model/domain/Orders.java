@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
  * 订单表
  * </p>
  *
- * @author itcast
- * @since 2023-08-02
+ * @author ithyfjs
+ * @since 2024-07-02
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

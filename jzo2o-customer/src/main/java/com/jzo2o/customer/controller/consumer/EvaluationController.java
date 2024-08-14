@@ -1,6 +1,9 @@
 package com.jzo2o.customer.controller.consumer;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.jzo2o.api.customer.dto.request.EvaluationSubmitReqDTO;
+import com.jzo2o.api.customer.dto.request.ScoreItem;
+import com.jzo2o.api.customer.dto.response.AddressBookResDTO;
 import com.jzo2o.customer.model.dto.request.AuditReqDTO;
 import com.jzo2o.customer.model.dto.request.EvaluationPageByTargetReqDTO;
 import com.jzo2o.customer.model.dto.request.LikeOrCancelReqDTO;
@@ -17,7 +20,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -44,7 +49,25 @@ public class EvaluationController {
     @GetMapping("/pageByTarget")
     @ApiOperation("根据对象属性分页查询评价列表")
     public List<EvaluationResDTO> pageByTargetId(EvaluationPageByTargetReqDTO evaluationPageByTargetReqDTO) {
-        return evaluationService.pageByTarget(evaluationPageByTargetReqDTO);
+//
+        Date date = new Date(System.currentTimeMillis());
+        String[] s={"a","b"};
+        EvaluationResDTO.ScoreItem scoreItem=new EvaluationResDTO.ScoreItem();
+        scoreItem.setItemName("1");
+        scoreItem.setScore(1.0);
+        EvaluationResDTO.ScoreItem[] scoreItems={scoreItem};
+        EvaluationResDTO.Person person=new EvaluationResDTO.Person();
+        person.setAvatar("2");
+        person.setNickName("1");
+        person.setIsAnonymous(2);
+        EvaluationResDTO.HotIndexStatistics statistics=new EvaluationResDTO.HotIndexStatistics();
+        statistics.setLikeNumber(1);
+        statistics.setReplyNumber(1);
+        statistics.setQualityScore(1);
+        EvaluationResDTO evaluationResDTO=new EvaluationResDTO(scoreItems,"1","1","1","1","1","1",person,1.0,1,"1",s,1,statistics,1,"1",date,date,true);
+        List<EvaluationResDTO> list=new ArrayList<>();
+        list.add(evaluationResDTO);
+        return list;
     }
 
     @DeleteMapping("/{id}")

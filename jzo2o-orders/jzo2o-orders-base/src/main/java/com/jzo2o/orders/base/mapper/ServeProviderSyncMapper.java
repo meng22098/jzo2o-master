@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.Update;
  * 机构服务端更新服务时间 Mapper 接口
  * </p>
  *
- * @author itcast
- * @since 2023-08-09
+ * @author ithyfjs
+ * @since 2024-07-09
  */
 public interface ServeProviderSyncMapper extends BaseMapper<ServeProviderSync> {
 

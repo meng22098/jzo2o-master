@@ -83,8 +83,8 @@ public class FirstPageServeController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "服务id", required = true, dataTypeClass = Long.class)
     })
-    public List<ServeAggregationSimpleResDTO> serveDetail(@PathVariable("id") Long id) {
-        List<ServeAggregationSimpleResDTO> serveCategoryResDTOS = homeService.queryServeDetail(id);
+    public ServeAggregationSimpleResDTO serveDetail(@PathVariable("id") Long id) {
+        ServeAggregationSimpleResDTO serveCategoryResDTOS = homeService.queryServeDetail(id);
         return serveCategoryResDTOS;
     }
 

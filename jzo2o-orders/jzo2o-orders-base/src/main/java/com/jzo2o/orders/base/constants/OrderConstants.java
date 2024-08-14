@@ -3,8 +3,8 @@ package com.jzo2o.orders.base.constants;
 /**
  * 订单常量
  *
- * @author itcast
- * @create 2023/7/28 15:06
+ * @author ithyfjs
+ * @create 2024/7/28 15:06
  **/
 public class OrderConstants {
     public static final class Status {

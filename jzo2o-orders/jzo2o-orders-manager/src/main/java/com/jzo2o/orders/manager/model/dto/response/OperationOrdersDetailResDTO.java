@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * 管理端订单详情
  *
- * @author itcast
- * @create 2023/9/12 21:05
+ * @author ithyfjs
+ * @create 2024/7/12 21:05
  **/
 @Data
 @ApiModel("管理端订单详情响应数据")

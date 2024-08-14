@@ -9,8 +9,8 @@ import com.jzo2o.orders.base.model.dto.OrderUpdateStatusDTO;
  * 订单表 服务类
  * </p>
  *
- * @author itcast
- * @since 2023-08-02
+ * @author ithyfjs
+ * @since 2024-07-02
  */
 public interface IOrdersCommonService extends IService<Orders> {
 

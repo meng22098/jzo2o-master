@@ -74,6 +74,28 @@ public class EvaluationResDTO {
     @ApiModelProperty("是否点赞")
     private Boolean isLiked;
 
+    public EvaluationResDTO(ScoreItem[] scoreArray,String id, String targetId, String relationId, String targetName, String ownerId, String evaluatorId, Person evaluatorInfo, Double totalScore, Integer scoreLevel, String content, String[] pictureArray, Integer isTop, HotIndexStatistics statistics, Integer hotScore, String province, Date createTime, Date updateTime, Boolean isLiked) {
+        this.scoreArray=scoreArray;
+        this.id = id;
+        this.targetId = targetId;
+        this.relationId = relationId;
+        this.targetName = targetName;
+        this.ownerId = ownerId;
+        this.evaluatorId = evaluatorId;
+        this.evaluatorInfo = evaluatorInfo;
+        this.totalScore = totalScore;
+        this.scoreLevel = scoreLevel;
+        this.content = content;
+        this.pictureArray = pictureArray;
+        this.isTop = isTop;
+        this.statistics = statistics;
+        this.hotScore = hotScore;
+        this.province = province;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.isLiked = isLiked;
+    }
+
     /**
      * 评分项
      */

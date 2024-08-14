@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * @author itcast
+ * @author ithyfjs
  */
 @Data
 @ApiModel("派单列表")

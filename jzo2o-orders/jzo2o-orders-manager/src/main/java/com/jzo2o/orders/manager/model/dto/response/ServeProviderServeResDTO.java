@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * 服务人员/机构服务数据
  *
- * @author itcast
- * @create 2023/9/15 14:26
+ * @author ithyfjs
+ * @create 2024/7/15 14:26
  **/
 @Data
 @ApiModel("服务人员/机构服务数据")

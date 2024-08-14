@@ -32,7 +32,6 @@ public class InnerServeController implements ServeApi {
             @ApiImplicitParam(name = "id", value = "服务项id", required = true, dataTypeClass = Long.class)
     })
     public ServeAggregationResDTO findById(@NotNull(message = "id不能为空") @PathVariable("id") Long id) {
-//        return serveService.findServeDetailById(id);
-        return null;
+        return serveService.findServeDetailById(id);
     }
 }

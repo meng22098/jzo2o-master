@@ -6,9 +6,12 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jzo2o.api.foundations.dto.response.ConfigRegionInnerResDTO;
+import com.jzo2o.api.foundations.dto.response.ServeAggregationResDTO;
 import com.jzo2o.common.expcetions.CommonException;
 import com.jzo2o.common.expcetions.ForbiddenOperationException;
 import com.jzo2o.common.model.PageResult;
+import com.jzo2o.common.utils.BeanUtils;
 import com.jzo2o.foundations.constants.RedisConstants;
 import com.jzo2o.foundations.enums.FoundationStatusEnum;
 import com.jzo2o.foundations.mapper.*;
@@ -259,6 +262,11 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
             throw new CommonException("服务取消热门失败");
         }
         return baseMapper.selectById(id);
+    }
+
+    @Override
+    public ServeAggregationResDTO findServeDetailById(Long id) {
+      return baseMapper.findServeDetailById(id);
     }
 
     /**

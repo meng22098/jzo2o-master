@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  *  Mapper 接口
  * </p>
  *
- * @author itcast
- * @since 2023-08-19
+ * @author ithyfjs
+ * @since 2024-07-19
  */
 public interface OrdersCanceledMapper extends BaseMapper<OrdersCanceled> {
 

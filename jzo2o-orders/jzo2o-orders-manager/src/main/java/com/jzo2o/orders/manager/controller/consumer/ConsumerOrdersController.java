@@ -24,7 +24,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author itcast
+ * @author ithyfjs
  */
 @RestController("consumerOrdersController")
 @Api(tags = "用户端-订单相关接口")
@@ -33,6 +33,8 @@ public class ConsumerOrdersController {
 
     @Resource
     private IOrdersManagerService ordersManagerService;
+    @Resource
+    private IOrdersCreateService ordersCreateService;
 
 
     @GetMapping("/{id}")
@@ -43,6 +45,16 @@ public class ConsumerOrdersController {
     public OrderResDTO detail(@PathVariable("id") Long id) {
         return ordersManagerService.getDetail(id);
     }
+    @GetMapping("/getAvailableCoupons")
+    @ApiOperation("根据订单id查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "serveId", value = "服务id", required = true, dataTypeClass = Long.class),
+            @ApiImplicitParam(name = "purNum", value = "数量", required = true, dataTypeClass = Long.class)
+    })
+    public void getAvailableCoupons(@RequestBody long serveId,long purNum) {
+        System.out.println(serveId+purNum);
+    }
+
     @GetMapping("/consumerQueryList")
     @ApiOperation("订单滚动分页查询")
     @ApiImplicitParams({
@@ -52,5 +64,11 @@ public class ConsumerOrdersController {
     public List<OrderSimpleResDTO> consumerQueryList(@RequestParam(value = "ordersStatus", required = false) Integer ordersStatus,
                                                      @RequestParam(value = "sortBy", required = false) Long sortBy) {
         return ordersManagerService.consumerQueryList(UserContext.currentUserId(), ordersStatus, sortBy);
+    }
+    @ApiOperation("下单接口")
+    @PostMapping("/place")
+    public PlaceOrderResDTO place(@RequestBody PlaceOrderReqDTO placeOrderReqDTO) {
+        PlaceOrderResDTO orderResDTO = ordersCreateService.placeOrder(placeOrderReqDTO);
+        return orderResDTO;
     }
 }

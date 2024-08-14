@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
  *  订单取消服务实现类
  * </p>
  *
- * @author itcast
- * @since 2023-08-19
+ * @author ithyfjs
+ * @since 2024-07-19
  */
 @Service
 public class OrdersCanceledServiceImpl extends ServiceImpl<OrdersCanceledMapper, OrdersCanceled> implements IOrdersCanceledService {

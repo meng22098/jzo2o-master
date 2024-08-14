@@ -14,8 +14,8 @@ import lombok.experimental.Accessors;
  * 抢单池
  * </p>
  *
- * @author itcast
- * @since 2023-08-15
+ * @author ithyfjs
+ * @since 2024-07-15
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -15,8 +15,8 @@ import lombok.experimental.Accessors;
  * 订单退款表
  * </p>
  *
- * @author itcast
- * @since 2023-09-07
+ * @author ithyfjs
+ * @since 2024-07-07
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
