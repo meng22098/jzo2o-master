@@ -266,7 +266,28 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
 
     @Override
     public ServeAggregationResDTO findServeDetailById(Long id) {
-      return baseMapper.findServeDetailById(id);
+        //1.查询服务信息
+        Serve serve = baseMapper.selectById(id);
+
+        //2.查询服务项信息
+        ServeItem serveItem = serveItemMapper.selectById(serve.getServeItemId());
+        ServeType serveType = serveTypeMapper.selectById(serveItem.getServeTypeId());
+        //3.封装数据
+        ServeAggregationResDTO serveAggregationResDTO = BeanUtil.toBean(serve, ServeAggregationResDTO.class);
+        serveAggregationResDTO.setServeItemName(serveItem.getName());
+        serveAggregationResDTO.setServeTypeId(serveItem.getServeTypeId());
+        serveAggregationResDTO.setServeItemImg(serveItem.getImg());
+        serveAggregationResDTO.setServeItemSortNum(serveItem.getSortNum());
+        serveAggregationResDTO.setServeItemIcon(serveItem.getServeItemIcon());
+        serveAggregationResDTO.setServeTypeSortNum(serveType.getSortNum());
+        serveAggregationResDTO.setServeTypeName(serveType.getName());
+        serveAggregationResDTO.setServeTypeImg(serveType.getImg());
+        serveAggregationResDTO.setServeTypeIcon(serveType.getServeTypeIcon());
+        serveAggregationResDTO.setDetailImg(serveItem.getDetailImg());
+
+        serveAggregationResDTO.setUnit(serveItem.getUnit());
+        System.out.println("=========================serveAggregationResDTO:"+serveAggregationResDTO);
+        return serveAggregationResDTO;
     }
 
     /**

@@ -17,6 +17,7 @@ import com.jzo2o.orders.manager.model.dto.response.OperationOrdersDetailResDTO;
 import com.jzo2o.orders.manager.model.dto.response.OrdersPayResDTO;
 import com.jzo2o.orders.manager.model.dto.response.PlaceOrderResDTO;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -62,4 +63,7 @@ public interface IOrdersManagerService extends IService<Orders> {
      */
     void evaluationOrder(Long ordersId);
 
+    void cancel(OrderCancelDTO orderCancelDTO);
+    void cancelByDispatching(OrderCancelDTO orderCancelDTO, Long tradingOrderNo, BigDecimal realPayAmount);
+    public List<Orders> queryOverTimePayOrdersListByCount(Integer count);
 }

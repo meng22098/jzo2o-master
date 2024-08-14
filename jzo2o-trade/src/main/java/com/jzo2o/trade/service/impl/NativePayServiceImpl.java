@@ -102,6 +102,7 @@ public class NativePayServiceImpl implements NativePayService {
                 //&#x8C03;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x652F;&#x4ED8;&#x6E20;&#x9053;&#x8FDB;&#x884C;&#x5904;&#x7406;
                 PayChannelEnum payChannel = PayChannelEnum.valueOf(tradingEntity.getTradingChannel());
                 NativePayHandler nativePayHandler = HandlerFactory.get(payChannel, NativePayHandler.class);
+                System.out.println(tradingEntity);
                 nativePayHandler.createDownLineTrading(tradingEntity);
 
                 //生成统一收款二维码

@@ -17,6 +17,7 @@ import com.jzo2o.orders.manager.model.dto.response.OperationOrdersDetailResDTO;
 import com.jzo2o.orders.manager.model.dto.response.OrdersPayResDTO;
 import com.jzo2o.orders.manager.model.dto.response.PlaceOrderResDTO;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -28,7 +29,14 @@ import java.util.List;
  * @since 2024-07-10
  */
 public interface IOrdersCreateService extends IService<Orders> {
-
+    void add(Orders orders);
 
     PlaceOrderResDTO placeOrder(PlaceOrderReqDTO placeOrderReqDTO);
+
+    OrdersPayResDTO pay(Long id, OrdersPayReqDTO ordersPayReqDTO);
+
+    OrdersPayResDTO getPayResultFromTradServer(Long id);
+    void paySuccess(TradeStatusMsg tradeStatusMsg);
+
+    List<Orders> queryOverTimePayOrdersListByCount(int i);
 }

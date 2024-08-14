@@ -45,9 +45,8 @@ public class BeforePayHandlerImpl implements BeforePayHandler {
 
     @Override
     public void checkCreateTrading(Trading tradingEntity) {
-        //校验不为为空，订单备注、订单号、企业号、交易金额、支付渠道
+        //校验不为空，订单备注、订单号、企业号、交易金额、支付渠道
         boolean flag = ObjectUtil.isAllNotEmpty(tradingEntity,
-                tradingEntity.getMemo(),
                 tradingEntity.getProductOrderNo(),
                 tradingEntity.getEnterpriseId(),
                 tradingEntity.getTradingAmount(),

@@ -1,5 +1,4 @@
 package com.jzo2o.orders.base.service.impl;
-
 import com.jzo2o.api.foundations.RegionApi;
 import com.jzo2o.api.foundations.ServeApi;
 import com.jzo2o.api.foundations.dto.response.ConfigRegionInnerResDTO;

@@ -61,14 +61,43 @@ public class ConsumerOrdersController {
             @ApiImplicitParam(name = "ordersStatus", value = "订单状态，0：待支付，100：派单中，200：待服务，300：服务中，400：待评价，500：订单完成，600：订单取消，700：已关闭", required = false, dataTypeClass = Integer.class),
             @ApiImplicitParam(name = "sortBy", value = "排序字段", required = false, dataTypeClass = Long.class)
     })
-    public List<OrderSimpleResDTO> consumerQueryList(@RequestParam(value = "ordersStatus", required = false) Integer ordersStatus,
-                                                     @RequestParam(value = "sortBy", required = false) Long sortBy) {
+    public List<OrderSimpleResDTO> consumerQueryList(@RequestParam(value = "ordersStatus", required = false) Integer ordersStatus, @RequestParam(value = "sortBy", required = false) Long sortBy) {
         return ordersManagerService.consumerQueryList(UserContext.currentUserId(), ordersStatus, sortBy);
     }
     @ApiOperation("下单接口")
     @PostMapping("/place")
     public PlaceOrderResDTO place(@RequestBody PlaceOrderReqDTO placeOrderReqDTO) {
         PlaceOrderResDTO orderResDTO = ordersCreateService.placeOrder(placeOrderReqDTO);
+        System.out.println(orderResDTO);
         return orderResDTO;
+    }
+    @PutMapping("/pay/{id}")
+    @ApiOperation("订单支付")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "订单id", required = true, dataTypeClass = Long.class)
+    })
+    public OrdersPayResDTO pay(@PathVariable("id") Long id, @RequestBody OrdersPayReqDTO ordersPayReqDTO) {
+        OrdersPayResDTO pay = ordersCreateService.pay(id, ordersPayReqDTO);
+        return pay;
+    }
+    @GetMapping("/pay/{id}/result")
+    @ApiOperation("查询订单支付结果")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "订单id", required = true,
+                    dataTypeClass = Long.class)
+    })
+    public OrdersPayResDTO payResult(@PathVariable("id") Long id) {
+        return ordersCreateService.getPayResultFromTradServer(id);
+    }
+    @PutMapping("/cancel")
+    @ApiOperation("取消订单")
+    public void cancel(@RequestBody OrderCancelReqDTO orderCancelReqDTO) {
+        OrderCancelDTO orderCancelDTO = BeanUtil.toBean(orderCancelReqDTO,OrderCancelDTO.class);
+        // 这部分用户信息从线程上下文获取，无需用户传递，我们后续会使用
+        CurrentUserInfo currentUserInfo = UserContext.currentUser();
+        orderCancelDTO.setCurrentUserId(currentUserInfo.getId());
+        orderCancelDTO.setCurrentUserName(currentUserInfo.getName());
+        orderCancelDTO.setCurrentUserType(currentUserInfo.getUserType());
+        ordersManagerService.cancel(orderCancelDTO);
     }
 }

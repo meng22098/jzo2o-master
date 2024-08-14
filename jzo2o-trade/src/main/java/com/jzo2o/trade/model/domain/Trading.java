@@ -138,7 +138,7 @@ public class Trading implements Serializable {
     /**
      * 备注【订单门店，桌台信息】
      */
-    private String memo;
+    private String memo="无";
 
     /**
      * 二维码base64数据
