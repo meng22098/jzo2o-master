@@ -25,4 +25,7 @@ import java.util.List;
 public interface ICouponService extends IService<Coupon> {
 
 
+    List<CouponInfoResDTO> queryForList(Long lastId, Long currentUserId, Integer status);
+
+    PageResult<CouponInfoResDTO> queryForPageOfOperation(CouponOperationPageQueryReqDTO couponOperationPageQueryReqDTO);
 }

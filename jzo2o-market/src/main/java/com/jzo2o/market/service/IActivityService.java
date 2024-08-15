@@ -21,4 +21,11 @@ import java.util.List;
 public interface IActivityService extends IService<Activity> {
 
 
+    PageResult<ActivityInfoResDTO> queryForPage(ActivityQueryForPageReqDTO activityQueryForPageReqDTO);
+
+    ActivityInfoResDTO queryById(Long id);
+
+    void save(ActivitySaveReqDTO activitySaveReqDTO);
+
+    void revoke(Long id);
 }

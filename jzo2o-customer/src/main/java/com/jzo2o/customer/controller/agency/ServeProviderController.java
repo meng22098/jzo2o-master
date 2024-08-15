@@ -24,12 +24,15 @@ import javax.annotation.Resource;
 public class ServeProviderController {
     @Resource
     private IServeProviderService serveProviderService;
-
-
-
     @GetMapping("/currentUserInfo")
     @ApiOperation("获取当前用户信息")
     public ServeProviderInfoResDTO currentUserInfo() {
         return serveProviderService.currentUserInfo();
     }
+    @PostMapping("/institution/resetPassword")
+    @ApiOperation("机构人员重置密码")
+    public void resetPassword(@RequestBody InstitutionResetPasswordReqDTO institutionResetPasswordReqDTO) {
+        serveProviderService.resetPassword(institutionResetPasswordReqDTO);
+    }
+
 }

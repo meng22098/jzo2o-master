@@ -55,4 +55,23 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
     private ICouponWriteOffService couponWriteOffService;
 
 
+    @Override
+    public PageResult<ActivityInfoResDTO> queryForPage(ActivityQueryForPageReqDTO activityQueryForPageReqDTO) {
+        return null;
+    }
+
+    @Override
+    public ActivityInfoResDTO queryById(Long id) {
+        return null;
+    }
+
+    @Override
+    public void save(ActivitySaveReqDTO activitySaveReqDTO) {
+
+    }
+
+    @Override
+    public void revoke(Long id) {
+
+    }
 }

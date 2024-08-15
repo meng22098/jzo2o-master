@@ -35,6 +35,7 @@ import com.jzo2o.customer.model.dto.response.ServeProviderListResDTO;
 import com.jzo2o.customer.service.*;
 import com.jzo2o.mvc.utils.UserContext;
 import com.jzo2o.mysql.utils.PageHelperUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -206,10 +207,30 @@ public class ServeProviderServiceImpl extends ServiceImpl<ServeProviderMapper, S
         }
     }
 
+    /**
+     * 注册
+     * @param institutionRegisterReqDTO
+     * @return
+     */
     @Override
-    public void registerInstitution(InstitutionRegisterReqDTO institutionRegisterReqDTO) {
-        //todo
+    public ServeProvider registerInstitution(InstitutionRegisterReqDTO institutionRegisterReqDTO) {
+        //1.校验手机验证码是否正确
+        //1.1.数据校验
+        if(StringUtils.isEmpty(institutionRegisterReqDTO.getVerifyCode())){
+            throw new BadRequestException("验证码错误，请重新获取");
+        }
+        //1.2.远程调用publics服务校验验证码是否正确
+        boolean verifyResult = smsCodeApi.verify(institutionRegisterReqDTO.getPhone(), SmsBussinessTypeEnum.INSTITION_REGISTER, institutionRegisterReqDTO.getVerifyCode()).getIsSuccess();
+        if(!verifyResult) {
+            throw new BadRequestException("验证码错误，请重新获取");
+        }
+        //2.检查手机号是否被注册过
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encode = passwordEncoder.encode(institutionRegisterReqDTO.getPassword());
+        ServeProvider serveProvider = add(institutionRegisterReqDTO.getPhone(), UserType.INSTITUTION, encode);
+        return serveProvider;
     }
+
 
     /**
      * 根据服务人员/机构id查询基本信息
@@ -277,5 +298,41 @@ public class ServeProviderServiceImpl extends ServiceImpl<ServeProviderMapper, S
     public ServeProviderInfoResDTO currentUserInfo() {
         ServeProvider serveProvider = baseMapper.selectById(UserContext.currentUserId());
         return BeanUtils.toBean(serveProvider,ServeProviderInfoResDTO.class);
+    }
+
+    /**
+     * 忘记密码
+     * @param institutionResetPasswordReqDTO
+     * @return
+     */
+    @Override
+    public ServeProvider resetPassword(InstitutionResetPasswordReqDTO institutionResetPasswordReqDTO) {
+        //0.校验手机号是否存在
+        ServeProvider existServeProvider = lambdaQuery().eq(ServeProvider::getPhone, institutionResetPasswordReqDTO.getPhone())
+                .one();
+        if (existServeProvider == null) {
+            throw new BadRequestException("该账号未注册");
+        }
+        //1.校验手机验证码是否正确
+        //1.1.数据校验
+        if(StringUtils.isEmpty(institutionResetPasswordReqDTO.getVerifyCode())){
+            throw new BadRequestException("验证码错误，请重新获取");
+        }
+        //1.2.远程调用publics服务校验验证码是否正确
+        boolean verifyResult = smsCodeApi.verify(institutionResetPasswordReqDTO.getPhone(), SmsBussinessTypeEnum.INSTITUTION_RESET_PASSWORD, institutionResetPasswordReqDTO.getVerifyCode()).getIsSuccess();
+        if(!verifyResult) {
+            throw new BadRequestException("验证码错误，请重新获取");
+        }
+        //2.修改密码
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encode = passwordEncoder.encode(institutionResetPasswordReqDTO.getPassword());
+        boolean update = lambdaUpdate().eq(ServeProvider::getPhone, institutionResetPasswordReqDTO.getPhone())
+                .set(ServeProvider::getPassword, encode)
+                .update();
+        if(!update){
+            throw new BadRequestException("重置密码失败");
+        }
+        existServeProvider.setPassword(encode);
+        return existServeProvider;
     }
 }

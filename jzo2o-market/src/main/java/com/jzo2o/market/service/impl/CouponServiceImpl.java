@@ -77,4 +77,13 @@ public class CouponServiceImpl extends ServiceImpl<CouponMapper, Coupon> impleme
     private ICouponWriteOffService couponWriteOffService;
 
 
+    @Override
+    public List<CouponInfoResDTO> queryForList(Long lastId, Long currentUserId, Integer status) {
+        return null;
+    }
+
+    @Override
+    public PageResult<CouponInfoResDTO> queryForPageOfOperation(CouponOperationPageQueryReqDTO couponOperationPageQueryReqDTO) {
+        return null;
+    }
 }
