@@ -10,6 +10,7 @@ import com.jzo2o.customer.enums.CertificationStatusEnum;
 import com.jzo2o.customer.mapper.WorkerCertificationMapper;
 import com.jzo2o.customer.model.domain.WorkerCertification;
 import com.jzo2o.customer.model.dto.WorkerCertificationUpdateDTO;
+import com.jzo2o.customer.model.dto.request.WorkerCertificationAuditAddReqDTO;
 import com.jzo2o.customer.model.dto.response.WorkerCertificationResDTO;
 import com.jzo2o.customer.service.IWorkerCertificationService;
 import org.springframework.stereotype.Service;
@@ -45,5 +46,10 @@ public class WorkerCertificationServiceImpl extends ServiceImpl<WorkerCertificat
                 .set(ObjectUtil.isNotEmpty(workerCertificationUpdateDTO.getCertificationMaterial()), WorkerCertification::getCertificationMaterial, workerCertificationUpdateDTO.getCertificationMaterial())
                 .set(ObjectUtil.isNotEmpty(workerCertificationUpdateDTO.getCertificationTime()), WorkerCertification::getCertificationTime, workerCertificationUpdateDTO.getCertificationTime());
         super.update(updateWrapper);
+    }
+
+    @Override
+    public void submitAuth(WorkerCertificationAuditAddReqDTO workerCertificationAuditAddReqDTO) {
+
     }
 }

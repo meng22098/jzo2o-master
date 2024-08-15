@@ -8,6 +8,7 @@ import com.jzo2o.customer.enums.CertificationStatusEnum;
 import com.jzo2o.customer.mapper.AgencyCertificationMapper;
 import com.jzo2o.customer.model.domain.AgencyCertification;
 import com.jzo2o.customer.model.dto.AgencyCertificationUpdateDTO;
+import com.jzo2o.customer.model.dto.request.AgencyCertificationAuditAddReqDTO;
 import com.jzo2o.customer.service.IAgencyCertificationService;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,11 @@ public class AgencyCertificationServiceImpl extends ServiceImpl<AgencyCertificat
                 .set(ObjectUtil.isNotEmpty(agencyCertificationUpdateDTO.getBusinessLicense()), AgencyCertification::getBusinessLicense, agencyCertificationUpdateDTO.getBusinessLicense())
                 .set(ObjectUtil.isNotEmpty(agencyCertificationUpdateDTO.getCertificationTime()), AgencyCertification::getCertificationTime, agencyCertificationUpdateDTO.getCertificationTime());
         super.update(updateWrapper);
+    }
+
+    @Override
+    public void submitAuth(AgencyCertificationAuditAddReqDTO agencyCertificationAuditAddReqDTO) {
+
     }
 
 
